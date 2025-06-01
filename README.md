@@ -12,7 +12,7 @@ PhyloAMR-heatmap-visualization presents R scripts &amp; data to generate a combi
 * Attaches gene presence/absence heatmap using `gheatmap`
 
 
-## Required R packages
+## Required *R* packages
 
 * CRAN: `ggplot2`, `grid`, `gridExtra`, `cowplot`
 * Bioconductor: `ggtree`, `treeio`, `ape`
@@ -24,7 +24,8 @@ PhyloAMR-heatmap-visualization presents R scripts &amp; data to generate a combi
 
 
 ## Example
-![Phylogenetic_tree_with_heatmap.png]
+
+![Example Heatmap](Phylogenetic_tree_with_heatmap.png)
 
 ## Sample execution
 
