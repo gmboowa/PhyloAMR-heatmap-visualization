@@ -74,7 +74,7 @@ ring_spacing <- ring_width + 0.08
 
 # Build the tree plot
 p <- ggtree(tree, layout = "circular", branch.length = "none") %<+% metadata +
-  geom_tiplab(size = 2, align = TRUE, linesize = .3, linetype = "solid", offset = ring_spacing * 3) +
+  geom_tiplab(size = 2, align = TRUE, linesize = .3, linetype = "solid", offset = ring_spacing * 3, fontface = "bold") +
 
   # Ring 1: Location
   new_scale_fill() +
