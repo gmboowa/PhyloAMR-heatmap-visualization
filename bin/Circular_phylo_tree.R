@@ -84,7 +84,11 @@ p <- ggtree(tree, layout = "circular", branch.length = "none") %<+% metadata +
     width = ring_width,
     offset = ring_spacing * 0
   ) +
-  scale_fill_manual(name = "Location", values = location_palette) +
+  scale_fill_manual(
+    name = "Location (inner ring)",
+    values = location_palette,
+    guide = guide_legend(title.theme = element_text(face = "bold"))
+  ) +
 
   # Ring 2: Year Group
   new_scale_fill() +
@@ -94,7 +98,11 @@ p <- ggtree(tree, layout = "circular", branch.length = "none") %<+% metadata +
     width = ring_width,
     offset = ring_spacing * 0.2
   ) +
-  scale_fill_manual(name = "Year Group", values = year_palette) +
+  scale_fill_manual(
+    name = "Year Group (middle ring)",
+    values = year_palette,
+    guide = guide_legend(title.theme = element_text(face = "bold"))
+  ) +
 
   # Ring 3: MTB Lineage
   new_scale_fill() +
@@ -104,7 +112,11 @@ p <- ggtree(tree, layout = "circular", branch.length = "none") %<+% metadata +
     width = ring_width,
     offset = ring_spacing * 0.2
   ) +
-  scale_fill_manual(name = "Mtb Lineage", values = lineage_palette)
+  scale_fill_manual(
+    name = "Mtb Lineage (outer ring)",
+    values = lineage_palette,
+    guide = guide_legend(title.theme = element_text(face = "bold"))
+  )
 
 # Save output
 ggsave("circular_tree_plot_annotated.pdf", plot = p, width = 10, height = 10, dpi = 300)
