@@ -6,7 +6,7 @@ PhyloAMR-heatmap-visualization presents R scripts &amp; data to generate a combi
 * `sample_tree.nwk`: Newick tree with 20 tip labels
 * `Mtb_tree_50tips.nwk`: Newick tree with 50 tip labels (Mtb)
 * `amr_matrix.csv`: 20x10 binary matrix of AMR gene presence/absence
-* `Mtb_metadata_50tips.tsv`: Mtb metadata including; label,	Location,	Year,	rpoB_mutation,	Mtb_Lineage
+* `Mtb_metadata_50tips.tsv`: Mtb metadata including; label,	Location,	Year,	*rpoB* mutations,	Mtb_Lineage
 
 ## Features
 
