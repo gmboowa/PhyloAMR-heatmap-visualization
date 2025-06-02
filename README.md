@@ -3,8 +3,10 @@ PhyloAMR-heatmap-visualization presents R scripts &amp; data to generate a combi
 
 ## Input files
 
-* `sample_tree.nwk`: Newick tree with 20 tip labels 
-* `amr_matrix.csv`: 20x10 binary matrix of AMR gene presence/absence 
+* `sample_tree.nwk`: Newick tree with 20 tip labels
+* `Mtb_tree_50tips.nwk`: Newick tree with 50 tip labels (Mtb)
+* `amr_matrix.csv`: 20x10 binary matrix of AMR gene presence/absence
+* `Mtb_metadata_50tips.tsv`: Mtb metadata including; label,	Location,	Year,	rpoB_mutation,	Mtb_Lineage
 
 ## Features
 
@@ -27,6 +29,8 @@ PhyloAMR-heatmap-visualization presents R scripts &amp; data to generate a combi
 
 ![Example Heatmap](Phylogenetic_tree_with_heatmap.png)
 
+![Example circular tree](Phylogenetic_tree.png)
+
 ## Sample execution
 
 Run the script in your *R* environment or via terminal:
@@ -34,6 +38,12 @@ Run the script in your *R* environment or via terminal:
 ```bash
 
 Rscript PhyloAMR-heatmap-visualization.R
+
+```
+
+```bash
+
+Rscript Circular_phylo_tree.R
 
 ```
 
