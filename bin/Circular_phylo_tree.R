@@ -1,4 +1,4 @@
-# circular_phylo_tree.R - Enhanced with thicker rings and annotation
+# circular_phylo_tree.R 
 
 # Install required packages if not already installed
 packages <- c("ggtree", "ggtreeExtra", "ggplot2", "treeio", "tidyr", "dplyr", "ggnewscale", "RColorBrewer", "viridis")
@@ -49,6 +49,11 @@ if (length(missing_tips) > 0) {
   )
 }
 
+# Ensure columns exist before coercing to factor
+if (!"Location" %in% names(metadata)) metadata$Location <- NA
+if (!"Year" %in% names(metadata)) metadata$Year <- NA
+if (!"Mtb_Lineage" %in% names(metadata)) metadata$Mtb_Lineage <- NA
+
 # Ensure correct factor levels
 metadata$Location <- factor(metadata$Location)
 metadata$Mtb_Lineage <- factor(metadata$Mtb_Lineage)
@@ -63,17 +68,21 @@ location_palette <- colorRampPalette(brewer.pal(8, "Dark2"))(n_location)
 year_palette <- brewer.pal(n = 4, name = "Blues")
 lineage_palette <- viridis(n_lineage, option = "D", direction = -1)
 
+# Standardized ring spacing and width
+ring_width <- 0.36 * 3
+ring_spacing <- ring_width + 0.08
+
 # Build the tree plot
 p <- ggtree(tree, layout = "circular", branch.length = "none") %<+% metadata +
-  geom_tiplab(size = 2, align = TRUE, linesize = .3, linetype = "solid", offset = 0.05) +
+  geom_tiplab(size = 2, align = TRUE, linesize = .3, linetype = "solid", offset = ring_spacing * 3) +
 
   # Ring 1: Location
   new_scale_fill() +
   geom_fruit(
     geom = geom_tile,
     mapping = aes(y = label, fill = Location),
-    width = 0.12,
-    offset = 0.00
+    width = ring_width,
+    offset = ring_spacing * 0
   ) +
   scale_fill_manual(name = "Location", values = location_palette) +
 
@@ -82,8 +91,8 @@ p <- ggtree(tree, layout = "circular", branch.length = "none") %<+% metadata +
   geom_fruit(
     geom = geom_tile,
     mapping = aes(y = label, fill = cut(Year, breaks = 4)),
-    width = 0.12,
-    offset = 0.28
+    width = ring_width,
+    offset = ring_spacing * 0.2
   ) +
   scale_fill_manual(name = "Year Group", values = year_palette) +
 
@@ -92,11 +101,11 @@ p <- ggtree(tree, layout = "circular", branch.length = "none") %<+% metadata +
   geom_fruit(
     geom = geom_tile,
     mapping = aes(y = label, fill = Mtb_Lineage),
-    width = 0.12,
-    offset = 0.46
+    width = ring_width,
+    offset = ring_spacing * 0.2
   ) +
   scale_fill_manual(name = "Mtb Lineage", values = lineage_palette)
 
 # Save output
 ggsave("circular_tree_plot_annotated.pdf", plot = p, width = 10, height = 10, dpi = 300)
-message("Plot saved as circular_tree_plot_annotated.pdf")
+message("\u2705 Plot saved as circular_tree_plot_annotated.pdf")
